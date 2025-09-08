@@ -1,0 +1,30 @@
+{
+  "name": "qr-utils-node",
+  "version": "1.0.0",
+  "description": "QRCode Utils (Decode & Encode) for Node.js",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write ."
+  },
+  "keywords": [
+    "qrcode",
+    "qr",
+    "qrcode-utils",
+    "qrcode-decode",
+    "qrcode-encode"
+  ],
+  "repository": "github:haizakura/qr-utils-node",
+  "author": "HAIZAKRUA",
+  "license": "MIT",
+  "type": "module",
+  "private": false,
+  "packageManager": "pnpm@10.14.0",
+  "dependencies": {
+    "qr": "^0.5.1",
+    "sharp": "^0.34.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}
