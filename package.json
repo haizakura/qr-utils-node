@@ -2,8 +2,9 @@
   "name": "qr-utils-node",
   "version": "1.0.0",
   "description": "QRCode Utils (Decode & Encode) for Node.js",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
+    "run": "node src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write ."
   },
@@ -18,8 +19,11 @@
   "author": "HAIZAKRUA",
   "license": "MIT",
   "type": "module",
-  "private": false,
   "packageManager": "pnpm@10.14.0",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
   "dependencies": {
     "qr": "^0.5.1",
     "sharp": "^0.34.3"
