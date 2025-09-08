@@ -15,14 +15,22 @@
     "qrcode-decode",
     "qrcode-encode"
   ],
-  "repository": "github:haizakura/qr-utils-node",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haizakura/qr-utils-node.git"
+  },
+  "homepage": "https://github.com/haizakura/qr-utils-node",
   "author": "HAIZAKRUA",
   "license": "MIT",
   "type": "module",
   "packageManager": "pnpm@10.14.0",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
-    "access": "public"
+    "access": "public",
+    "provenance": true
+  },
+  "engines": {
+    "node": ">= 20.19.0"
   },
   "dependencies": {
     "qr": "^0.5.1",
