@@ -1,12 +1,12 @@
 {
   "name": "qr-utils-node",
   "version": "1.0.0",
-  "description": "QRCode Utils (Decode & Encode) for Node.js",
+  "description": "QRCode Utils for Node.js, featuring error handling and validation, easy to use.",
   "main": "src/index.ts",
   "scripts": {
     "run": "node src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write ."
+    "test": "mocha",
+    "format": "prettier . --write"
   },
   "keywords": [
     "qrcode",
@@ -37,6 +37,10 @@
     "sharp": "^0.34.3"
   },
   "devDependencies": {
-    "prettier": "^3.6.2"
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.10.2",
+    "mocha": "^11.7.2",
+    "prettier": "^3.6.2",
+    "tsx": "^4.19.2"
   }
 }
