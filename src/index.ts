@@ -2,7 +2,7 @@ import sharp from 'sharp';
 import encodeQR from 'qr';
 import decodeQR from 'qr/decode.js';
 import { QRCodeProcessingError, QRCodeValidationError, QRCodeError, QRCodeConvertingError } from '@/exceptions';
-import { outputTypesMap } from '@/const';
+import { AS_TYPES_MAP, DEFAULT_OPTIONS } from '@/const';
 import type { QRDecodeImageData, QRCodeOptions, QRDecodeResult, QREncodeResult } from '@/const';
 
 /**
@@ -18,8 +18,14 @@ class QrcodeUtils {
     if (!imageData) {
       throw new QRCodeValidationError('No image data provided');
     }
-    if (!(imageData as QRDecodeImageData)) {
+    if (typeof imageData !== 'object' || imageData === null) {
       throw new QRCodeValidationError(`Invalid image data type. Expected QRDecodeImageData, got ${typeof imageData}`);
+    }
+    const data = imageData as any;
+    if (typeof data.width !== 'number' || typeof data.height !== 'number' || !data.data) {
+      throw new QRCodeValidationError(
+        'Invalid image data structure. Expected object with width, height, and data properties',
+      );
     }
   }
 
@@ -53,6 +59,18 @@ class QrcodeUtils {
         `Convert file to image data failed: ${error instanceof Error ? error.message : 'Unknown error'}`,
       );
     }
+  }
+
+  /**
+   * Combine options
+   * @param options - Options to combine
+   * @returns Combined options
+   */
+  private static combineOptions(options: QRCodeOptions): QRCodeOptions {
+    return {
+      ...DEFAULT_OPTIONS,
+      ...options,
+    };
   }
 
   /**
@@ -91,7 +109,7 @@ class QrcodeUtils {
     try {
       this.validateText(text);
       let qrData: Uint8Array | string | boolean[][];
-      const { as, ...restOptions } = options ?? {};
+      const { as, ...restOptions } = this.combineOptions(options ?? {});
       switch (as ?? 'gif') {
         case 'gif':
           qrData = encodeQR(text, 'gif', restOptions);
@@ -109,9 +127,10 @@ class QrcodeUtils {
           qrData = encodeQR(text, 'gif', restOptions);
           break;
       }
+      const outputType = as && AS_TYPES_MAP[as] ? as : 'gif';
       return {
         data: qrData,
-        type: outputTypesMap[as ?? 'gif'],
+        type: AS_TYPES_MAP[outputType],
       };
     } catch (error) {
       if (error instanceof QRCodeError) {

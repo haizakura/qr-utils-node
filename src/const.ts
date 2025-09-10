@@ -42,10 +42,23 @@ export type QRDecodeImageData = {
   data: Uint8Array | Uint8ClampedArray | number[];
 };
 
-export const outputTypesMap: Record<string, string> = {
+/**
+ * Default options
+ * @description Default options for QR code operations
+ */
+export const DEFAULT_OPTIONS: Readonly<QRCodeOptions> = Object.freeze({
+  as: 'gif',
+  scale: 8,
+});
+
+/**
+ * Output types map
+ * @description Map of output types to their corresponding types
+ */
+export const AS_TYPES_MAP: Readonly<Record<string, string>> = Object.freeze({
   ascii: 'string',
   term: 'string',
   svg: 'string',
   raw: 'boolean[][]',
   gif: 'uint8',
-};
+});
