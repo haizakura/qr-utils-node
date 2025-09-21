@@ -48,7 +48,7 @@ export type QRDecodeImageData = {
  */
 export const DEFAULT_OPTIONS: Readonly<QRCodeOptions> = Object.freeze({
   as: 'gif',
-  scale: 8,
+  scale: 2,
 });
 
 /**
