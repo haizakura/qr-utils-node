@@ -1,6 +1,6 @@
 {
   "name": "qr-utils-node",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "QRCode Utils for Node.js, featuring error handling and validation, easy to use.",
   "main": "src/index.ts",
   "scripts": {
