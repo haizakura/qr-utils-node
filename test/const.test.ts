@@ -16,7 +16,7 @@ describe('Constants', () => {
   describe('DEFAULT_OPTIONS', () => {
     it('should have correct default values', () => {
       assert.strictEqual(DEFAULT_OPTIONS.as, 'gif');
-      assert.strictEqual(DEFAULT_OPTIONS.scale, 8);
+      assert.strictEqual(DEFAULT_OPTIONS.scale, 2);
     });
 
     it('should be an object with expected properties', () => {
