@@ -42,9 +42,9 @@ const filePath = 'sample/img/qrcode.gif';
 console.log('File path:', filePath);
 
 /**
- * Decode QR code - File with Default Options
+ * Decode QR code - File
  */
-console.log('Decode QR code - File with Default Options');
+console.log('Decode QR code - File');
 const fileBuffer = readFileSync(filePath);
 const file = new File([fileBuffer], 'qrcode.gif', { type: 'image/gif' });
 const decodeResult = await QrcodeUtils.decode(file);
