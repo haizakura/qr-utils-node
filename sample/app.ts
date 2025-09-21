@@ -1,14 +1,10 @@
-# qrcode-utils-node
+import { QrcodeUtils } from '@/index';
+import { readFileSync } from 'fs';
 
-QRCode Utils for Node.js, featuring error handling and validation, easy to use.
-
-## Usage
-
-### Encoding
-
-```typescript
 const text = 'Hello, World!';
 console.log('Text:', text);
+
+/*********************ENCODE START***************************/
 
 /**
  * Encode QR code - Default Options
@@ -37,30 +33,11 @@ console.log('Result:', encodeResultAscii);
 console.log('Encode QR code - RAW with Default Options');
 const encodeResultRaw = await QrcodeUtils.encode(text, { as: 'raw' });
 console.log('Result:', encodeResultRaw);
-```
 
-### Encodeing Options
+/**********************ENCODE END****************************/
 
-```typescript
-/**
- * QRCode Options
- * @description Options for QR code operations
- */
-export interface QRCodeOptions extends QrOpts {
-  as?: string;
-  ecc?: ErrorCorrection;
-  encoding?: EncodingType;
-  version?: number;
-  mask?: number;
-  border?: number;
-  scale?: number;
-  optimize?: boolean;
-}
-```
+/*********************DECODE START***************************/
 
-### Decoding
-
-```typescript
 const filePath = 'sample/img/qrcode.gif';
 console.log('File path:', filePath);
 
@@ -72,20 +49,5 @@ const fileBuffer = readFileSync(filePath);
 const file = new File([fileBuffer], 'qrcode.gif', { type: 'image/gif' });
 const decodeResult = await QrcodeUtils.decode(file);
 console.log('Result:', decodeResult);
-```
 
-### Decode Options
-
-```typescript
-/**
- * QRDecode Image Data
- * @description Image data for QR code decoding
- */
-export type QRDecodeImageData = {
-  width: number;
-  height: number;
-  data: Uint8Array | Uint8ClampedArray | number[];
-};
-
-QrcodeUtils.decode(imageData: QRDecodeImageData | File);
-```
+/***********************DECODE END***************************/
